@@ -1,6 +1,10 @@
 <h1>bilibili_mobile_cache_joiner</h1>
-<p>°ïÖúÄã½«ÊÖ»ú¿Í»§¶Ë»º´æµÄÊÓÆµºÏ²¢²¢°´ÕÕ·¬¾çÃû×ÖÖØÃüÃû</p>
-<h3>ÓÃ·¨</h3>
-<p>py -3 bilijoiner.py -i [download dir] -o [a forder]<br>
-download dir ÎªÊÖ»úÉÏ Android/data/tv.danmaku.bili/downloadµÄ¸´ÖÆÄ¿Â¼
+<p>å¸®åŠ©ä½ å°†æ‰‹æœºå®¢æˆ·ç«¯ç¼“å­˜çš„è§†é¢‘åˆå¹¶å¹¶æŒ‰ç…§ç•ªå‰§åå­—é‡å‘½å</p>
+<h3>ç”¨æ³•</h3>
+<p><code>py -3 bilijoiner.py -i [download dir] -o [a forder]</code><br>
+download dir ä¸ºæ‰‹æœºä¸Š Android/data/tv.danmaku.bili/downloadçš„å¤åˆ¶ç›®å½•
+</p>
+<h3>little tools ç”¨æ³•<h3>
+<p><code>py -3 flv_join.py -o [output] [input1 inputn]</code><br>
+<code>py -3 mp4_join.py -o [output] [input1 inputn]</code>
 </p>
