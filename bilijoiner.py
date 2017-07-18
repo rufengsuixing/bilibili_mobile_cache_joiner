@@ -11,16 +11,22 @@ def hebing(name):
 #        lit+=abspath(a)
     li=glob.glob('*mp4')
     if len(li)==1:
-        shutil.copy(li[0],name+'.mp4')
-        print(name+'.mp4')
+        if not os.path.isfile(name+'.mp4'):
+            shutil.copy(li[0],name+'.mp4')
+            print(name+'.mp4')
+            return 'mp4'
+        print(name+'.mp4 exist ...jumped')
         return 'mp4'
     else:
         li+=glob.glob('[1234567890]*lv')
         if li==[]: 
             print(os.getcwd()+'no file found')
             return 'empty'
-        flv_join.concat_flvs(li,name+'.flv')   #conbian flv to name
-        print(name+'.flv')
+        if not os.path.isfile(name+'.flv'):
+            flv_join.concat_flvs(li,name+'.flv')   #conbian flv to name
+            print(name+'.flv')
+            return 'flv'
+        print(name+'.flv exist ...jumped')
         return 'flv'
 def usage():
     print('bilibilitopc.py -i <download dir> -o <wantdir>')
@@ -72,6 +78,7 @@ def main():
             tmp=glob.glob('*api*')
             if len(tmp) and os.path.isdir(tmp[0]):
                 os.chdir(tmp[0])
+            
             hebing(os.path.join(output,name))
     print('完成')
 if __name__=='__main__':
