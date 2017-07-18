@@ -3,7 +3,7 @@ import os
 import glob
 import json
 import flv_join
-import mp4_join
+import shutil
 def hebing(name):
     li=glob.glob('[1234567890]*lv')
 #    lit=[]
@@ -11,8 +11,10 @@ def hebing(name):
 #        lit+=abspath(a)
     if not li:
         li=glob.glob('*mp4')
-        assert li!=[] ,os.getcwd()
-        mp4_join.concat_mp4s(li, name+'.mp4')
+        if li==[]: 
+            print(os.getcwd()+'no file found')
+            return 'empty'
+        shutil.copy(li[0],name+'.mp4')
         return 'mp4'
     flv_join.concat_flvs(li,name+'.flv')   #conbian flv to name
     return 'flv'
@@ -58,10 +60,15 @@ def main():
         os.chdir(s_dir)  #s_dir 
         for b in glob.glob('*'):
             os.chdir(os.path.join(s_dir,b)) #entry dir
-            name=getname()
-            
-            os.chdir(glob.glob('*api*')[0])
-            print(os.getcwd())
+            try:
+                name=getname()
+            except:
+                print(os.getcwd()+' no info found')
+                continue
+            tmp=glob.glob('*api*')
+            if len(tmp) and os.path.isdir(tmp[0]):
+                os.chdir(tmp[0])
+            print(name)
             hebing(os.path.join(output,name))
     print('完成')
 if __name__=='__main__':
